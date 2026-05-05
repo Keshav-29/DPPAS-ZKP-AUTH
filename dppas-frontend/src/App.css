@@ -1,0 +1,117 @@
+/* General App container */
+.app-container {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: #333;
+}
+
+/* Header */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #1976d2;
+  text-shadow: 1px 1px 2px #aaa;
+}
+
+/* Status message */
+p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff3e0;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Buttons */
+button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+}
+
+button:hover {
+  background-color: #3367d6;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Input */
+input[type="text"] {
+  padding: 0.7rem 1rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 220px;
+}
+
+/* DID Section container */
+.did-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Transactions list */
+.transactions {
+  width: 90%;
+  max-width: 600px;
+  background-color: #ffffffcc;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+}
+
+.transactions h3 {
+  color: #f57c00;
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.transactions ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.transactions li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.transactions li:last-child {
+  border-bottom: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .did-section {
+    flex-direction: column;
+  }
+
+  input[type="text"] {
+    width: 80%;
+  }
+
+  button {
+    width: 80%;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "secret": 12345,
+  "nonce": 67890,
+  "publicHash": 0,
+  "publicNonce": 67890
+}

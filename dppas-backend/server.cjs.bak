@@ -1,0 +1,41 @@
+// server.js
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const { verifyProof } = require("./zkp_mock_server");
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+app.post("/verify-proof", async (req, res) => {
+  try {
+    const { proof, publicSignals, signature, challenge, did } = req.body;
+    // Basic checks
+    if (!proof || !publicSignals || !signature || !challenge || !did) {
+      return res.status(400).json({ valid: false, error: "missing fields" });
+    }
+
+    // Optionally verify signature ties to challenge (frontend used signer.signMessage)
+    // Here, we can skip signature recovery for mock, or implement ethers.utils.verifyMessage
+    // For demo, run mock verification
+    const valid = await verifyProof(proof, publicSignals);
+    return res.json({ valid });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ valid: false, error: err.message });
+  }
+});
+
+// Optional: return mock DID transactions for demo
+app.get("/did-transactions", (req, res) => {
+  const { did } = req.query;
+  const example = [
+    { hash: "0xabc1", type: "CREATE", did, timestamp: Date.now() - 3600 * 1000 },
+    { hash: "0xabc2", type: "UPDATE", did, timestamp: Date.now() - 2000 * 1000 },
+  ];
+  res.json({ txs: example });
+});
+
+const port = process.env.PORT || 4000;
+app.listen(port, () => console.log(`Backend running on ${port}`));
